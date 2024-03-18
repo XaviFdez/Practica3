@@ -10,4 +10,6 @@ Con la ayuda del microprocesador ESP32, utilizado en las prácticas anteriores, 
 Principalmente el fucionamiento de este código és configurar la placa ESP32, para que esta actue como un servidor, así para que genere una página web, donde esa página web es una página HTML, dónde se accede a su IP, desde un navegador.
 EL código incluye de las librerías WiFi.h y WebServer.h, para hacer lo dicho anteriormente.
 
+__....____
+
 La salida por terminal del código es:
