@@ -7,7 +7,8 @@ Con la ayuda del microprocesador ESP32, utilizado en las prácticas anteriores, 
 
 ## PRACTICA A- GENERACIÓN DE UNA PÁGINA WEB
 ```c++
-#include <Wid(200, "text/html", HTML);
+
+HACER DE NUEVO
 }
 ```
 ### Funcionamiento y salida por terminal:
