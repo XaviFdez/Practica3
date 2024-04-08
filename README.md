@@ -19,6 +19,9 @@ EL código incluye de las librerías WiFi.h y WebServer.h, para hacer lo dicho a
 __....____
 
 La salida por terminal del código es:
+```
+SALIDAS
+````
 
 ## PRACTICA B- COMUNICACIÓN BLUETOOTH CON EL MOVIL
 
@@ -30,5 +33,8 @@ La salida por terminal del código es:
 Este código proporcinado tiene como objetivo...
 
 Las salidas que se obtienen a través en impresión en serie:
+```
+SALIDAS
+````
 
 
