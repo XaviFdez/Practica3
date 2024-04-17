@@ -26,15 +26,35 @@ SALIDAS
 ## PRACTICA B- COMUNICACIÓN BLUETOOTH CON EL MOVIL
 
 ```c++
-
+#include "BluetoothSerial.h"
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
+#endif
+BluetoothSerial SerialBT;
+void setup() {
+Serial.begin(115200);
+SerialBT.begin("ESP32test"); //Bluetooth device name
+Serial.println("The device started, now you can pair it with bluetooth!");
+}
+void loop() {
+if (Serial.available()) {
+SerialBT.write(Serial.read());
+}
+if (SerialBT.available()) {
+Serial.write(SerialBT.read());
+}
+delay(20);
+}
 ```
-###Funcionamiento y salidas que se obtienen:
+### Funcionamiento y salidas que se obtienen:
 
-Este código proporcinado tiene como objetivo...
+Este código trabajamos con bluetooth, donde se establece una comunicación entre la placa ESP32 y un dispositivo móvil a traves del bluetooth, donde se puede enviar i recibir datos.
 
-Las salidas que se obtienen a través en impresión en serie:
-```
-SALIDAS
-````
+Las salidas que se obtienen:
+Las salidas que obtenemos a traves del puerto serie son los datos de que se envian y reciben en la comunicacón de los 2 dispositivos. 
+Los datos pueden ser enviados de 2 formas:
+. ESP32 al dispositivo
+. Del dispositivo al ESP32
+
 
 
