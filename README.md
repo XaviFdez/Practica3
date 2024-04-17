@@ -51,6 +51,7 @@ delay(20);
 Este código trabajamos con bluetooth, donde se establece una comunicación entre la placa ESP32 y un dispositivo móvil a traves del bluetooth, donde se puede enviar i recibir datos.
 
 Las salidas que se obtienen:
+
 Las salidas que obtenemos a traves del puerto serie son los datos de que se envian y reciben en la comunicacón de los 2 dispositivos. 
 Los datos pueden ser enviados de 2 formas:
 . ESP32 al dispositivo
