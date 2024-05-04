@@ -7,20 +7,72 @@ Con la ayuda del microprocesador ESP32, utilizado en las prácticas anteriores, 
 
 ## PRACTICA A- GENERACIÓN DE UNA PÁGINA WEB
 ```c++
+#include <WiFi.h>
+#include <WebServer.h>
+#include <Arduino.h>
 
-HACER DE NUEVO
+const char* ssid = "Xiaomi_11T_Pro"; 
+const char* password = "12345678"; 
+WebServer server(80);
+
+void handle_root();
+
+// Object of WebServer(HTTP port, 80 is defult)
+void setup() {
+Serial.begin(115200);
+Serial.println("Try Connecting to ");
+Serial.println(ssid);
+// Connect to your wi-fi modem
+WiFi.begin(ssid, password);
+// Check wi-fi is connected to wi-fi network
+while (WiFi.status() != WL_CONNECTED) {
+delay(1000);
+Serial.print(".");
+}
+Serial.println("");
+Serial.println("WiFi connected successfully");
+Serial.print("Got IP: ");
+Serial.println(WiFi.localIP()); //Show ESP32 IP on serial
+server.on("/", handle_root);
+server.begin();
+Serial.println("HTTP server started");
+delay(100);
+}
+void loop() {
+server.handleClient();
+}
+```
+HTML:
+```
+String HTML = "<!DOCTYPE html>\
+<html>\
+<body>\
+<h1> Pagina Web creada , Practica 3 - Wifi &#128522;</h1>\
+</body>\
+</html>";
+
+// Handle root url (/)
+void handle_root() {
+ server.send(200, "text/html", HTML);
 }
 ```
 ### Funcionamiento y salida por terminal:
 
 Principalmente el fucionamiento de este código és configurar la placa ESP32, para que esta actue como un servidor, así para que genere una página web, donde esa página web es una página HTML, dónde se accede a su IP, desde un navegador.
-EL código incluye de las librerías WiFi.h y WebServer.h, para hacer lo dicho anteriormente.
+- En la función *setup()*, se inicializa la comunicación serial, se conecta a la red Wi-Fi y se inicia el servidor web.
+- En la función *loop()*, se manejan las solicitudes de los clientes al servidor web.
 
-__....____
+El código incluye de las librerías WiFi.h y WebServer.h, para hacer lo dicho anteriormente.
 
-La salida por terminal del código es:
+La salida que se muestra por terminal del código:
+
 ```
-SALIDAS
+Try Connecting to 
+Xiaomi_11T_Pro
+...........................
+WiFi connected successfully
+Got IP: 192.168.1.100
+HTTP server started
 ````
 
 ## PRACTICA B- COMUNICACIÓN BLUETOOTH CON EL MOVIL
